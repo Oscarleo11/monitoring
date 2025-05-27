@@ -28,7 +28,7 @@ class ContractReminderMail extends Mailable
 
     public function build()
     {
-        return $this->subject('Rappel de contrat : ' . $this->title)
+        return $this->subject('UBA Compliance Monitoring : ' . $this->title)
                     ->view('emails.reminder')
                     ->with([
                         'title' => $this->title,
