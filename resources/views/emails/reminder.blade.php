@@ -1,4 +1,4 @@
-<h2>📌 UBA Compliance Monitoring "{{ $title }}"</h2>
+<h2>📌 UBA Compliance Monitoring : "{{ $title }}"</h2>
 
 <p>Bonjour,</p>
 
