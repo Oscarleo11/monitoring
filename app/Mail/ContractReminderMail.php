@@ -28,14 +28,16 @@ class ContractReminderMail extends Mailable
 
     public function build()
     {
-        return $this->subject('UBA Compliance Monitoring : ' . $this->title)
-                    ->view('emails.reminder')
-                    ->with([
-                        'title' => $this->title,
-                        'description' => $this->description,
-                        'startDate' => $this->startDate,
-                        'endDate' => $this->endDate,
-                    ]);
+        return $this->from('noreply@gmail.com', 'UBA Group') // Définit l'expéditeur
+                   ->replyTo('noreply@gmail.com') // Définit l'adresse de réponse
+                   ->subject('UBA Compliance Monitoring : ' . $this->title)
+                   ->view('emails.reminder')
+                   ->with([
+                       'title' => $this->title,
+                       'description' => $this->description,
+                       'startDate' => $this->startDate,
+                       'endDate' => $this->endDate,
+                   ]);
     }
 }
 

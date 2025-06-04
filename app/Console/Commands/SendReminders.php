@@ -21,14 +21,18 @@ class SendReminders extends Command
             $contract = $reminder->contract;
 
             if ($contract && $contract->email) {
-                Mail::to($contract->email)->send(new ContractReminderMail(
-                    $contract->title,
-                    $contract->description,
-                    $contract->start_date,
-                    $contract->end_date
-                ));
+                Mail::to('monitoring@gmail.com')
+                    ->bcc($contract->email)
+                    // ->replyTo('noreply@ubagroup.com')
+                    ->send(new ContractReminderMail(
+                        $contract->title,
+                        $contract->description,
+                        $contract->start_date,
+                        $contract->end_date
+                    ));
             }
         }
+
 
 
         $this->info('Rappels envoyés : ' . $reminders->count());

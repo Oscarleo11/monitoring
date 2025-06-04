@@ -16,18 +16,18 @@
                     value="{{ request('title') }}">
             </div>
             <div class="col-md-4 d-flex">
-                <button type="submit" class="btn btn-outline-primary me-2">
+                <button type="submit" class="btn btn-outline-danger me-2">
                     <i class="bi bi-search"></i> Rechercher
                 </button>
-                <a href="{{ route('contracts.index') }}" class="btn btn-outline-secondary">
+                <a href="{{ route('contracts.index') }}" class="btn btn-outline-primary">
                     <i class="bi bi-x-circle me-1"></i> Réinitialiser
                 </a>
             </div>
         </form>
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-0">Liste des contrats</h2>
-            <a href="{{ route('contracts.create') }}" class="btn btn-primary">
-                <i class="bi bi-plus-circle me-1"></i> Créer un contrat
+            <a href="{{ route('contracts.create') }}" class="btn bg-red-600 hover:bg-red-600">
+                <i class="bi bi-plus-circle me-1"></i> Enrégistrer un contrat
             </a>
         </div>
 

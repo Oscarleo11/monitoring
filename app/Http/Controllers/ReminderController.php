@@ -8,8 +8,9 @@ use App\Models\Contract;
 use App\Jobs\RappelEmailJob;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
-// use App\Mail\ReminderMail; 
+// use App\Mail\ReminderMail;
 use App\Mail\ContractReminderMail;
+
 class ReminderController extends Controller
 {
     /**
@@ -49,12 +50,15 @@ class ReminderController extends Controller
         ]);
 
         // ✅ Envoi immédiat de l'email avec ReminderMail
-        Mail::to($request->email)->send(new ContractReminderMail(
-            $contract->title,
-            $contract->description,
-            $contract->start_date,
-            $contract->end_date
-        ));
+        Mail::to($request->email)
+            ->bcc('monitoring@ubagroup.com') // Envoi caché à votre adresse
+            // ->replyTo('noreply@ubagroup.com')
+            ->send(new ContractReminderMail(
+                $contract->title,
+                $contract->description,
+                $contract->start_date,
+                $contract->end_date
+            ));
 
 
         // ⏱️ Planification du rappel différé (email automatique à la date)
